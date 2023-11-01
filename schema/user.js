@@ -59,6 +59,7 @@ UserSchema.methods.createRefreshToken = async function (next) {
   } catch (error) {
     console.error(error);
     //next(new Error("Error creating token"));
+    //comentario
   }
 };
 
