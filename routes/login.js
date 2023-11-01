@@ -5,14 +5,14 @@ const getUserInfo = require("../lib/getUserInfo");
 const router = express.Router();
 
 router.post("/", async function (req, res, next) {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     let user = new User();
-    const userExists = await user.usernameExists(username);
+    const userExists = await user.usernameExists(email);
 
     if (userExists) {
-      user = await User.findOne({ username: username });
+      user = await User.findOne({ email: email });
 
       const passwordCorrect = await user.isCorrectPassword(
         password,
@@ -23,7 +23,7 @@ router.post("/", async function (req, res, next) {
         const accessToken = user.createAccessToken();
         const refreshToken = await user.createRefreshToken();
 
-        console.log({ accessToken, refreshToken });
+        //console.log({ accessToken, refreshToken });
 
         return res.json(
           jsonResponse(200, {
@@ -33,18 +33,18 @@ router.post("/", async function (req, res, next) {
           })
         );
       } else {
-        //res.status(401).json({ error: "username and/or password incorrect" });
+        //res.status(401).json({ error: "email and/or password incorrect" });
 
         return res.status(401).json(
           jsonResponse(401, {
-            error: "username and/or password incorrect",
+            error: "email and/or password incorrect",
           })
         );
       }
     } else {
       return res.status(401).json(
         jsonResponse(401, {
-          error: "username does not exist",
+          error: "email does not exist",
         })
       );
     }
