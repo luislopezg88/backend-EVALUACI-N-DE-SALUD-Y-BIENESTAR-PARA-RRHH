@@ -23,8 +23,6 @@ router.post("/", async function (req, res, next) {
         const accessToken = user.createAccessToken();
         const refreshToken = await user.createRefreshToken();
 
-        //console.log({ accessToken, refreshToken });
-
         return res.json(
           jsonResponse(200, {
             accessToken,
