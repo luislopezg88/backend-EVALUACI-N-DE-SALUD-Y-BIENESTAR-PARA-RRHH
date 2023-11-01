@@ -48,6 +48,7 @@ router.post("/", async function (req, res, next) {
         );
       }
     } else {
+      console.log("email does not exist");
       return res.status(401).json(
         jsonResponse(401, {
           error: "email does not exist",
@@ -55,7 +56,7 @@ router.post("/", async function (req, res, next) {
       );
     }
   } catch (err) {
-    console.log(err);
+    console.log("err",err);
   }
 });
 
