@@ -7,6 +7,7 @@ const Token = require("../schema/token");
 const UserSchema = new Mongoose.Schema({
   id: { type: Object },
   email: { type: String, required: true, unique: true },
+  username: { type: String },
   name: { type: String },
   password: { type: String, required: true },
   edad: { type: String },
@@ -59,7 +60,6 @@ UserSchema.methods.createRefreshToken = async function (next) {
   } catch (error) {
     console.error(error);
     //next(new Error("Error creating token"));
-    //comentario
   }
 };
 

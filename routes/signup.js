@@ -4,7 +4,7 @@ const { jsonResponse } = require("../lib/jsonResponse");
 const router = express.Router();
 
 router.post("/", async function (req, res, next) {
-  const { email, name, password, edad, sexo, puestoTrabajo } = req.body;
+  const { email, username, name, password, edad, sexo, puestoTrabajo } = req.body;
 
   if (!email || !password) {
     //return next(new Error("email and password are required"));
@@ -27,7 +27,7 @@ router.post("/", async function (req, res, next) {
       );
       //return next(new Error("user email exists"));
     } else {
-      const user = new User({ email, name, password, edad, sexo, puestoTrabajo });
+      const user = new User({ email, username, name, password, edad, sexo, puestoTrabajo });
       user.save();
 
       res.json(
