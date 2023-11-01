@@ -5,9 +5,11 @@ const router = express.Router();
 
 router.post("/", async function (req, res, next) {
   const { email, username, name, password, edad, sexo, puestoTrabajo } = req.body;
+  console.log('body', req.body)
 
   if (!email || !password) {
     //return next(new Error("email and password are required"));
+    console.log('caso1')
     return res.status(409).json(
       jsonResponse(409, {
         error: "email and password son obligatorios",
@@ -18,7 +20,7 @@ router.post("/", async function (req, res, next) {
   try {
     const user = new User();
     const userExists = await user.usernameExists(email);
-
+    console.log('caso2 userExists', userExists)
     if (userExists) {
       return res.status(409).json(
         jsonResponse(409, {
@@ -29,7 +31,7 @@ router.post("/", async function (req, res, next) {
     } else {
       const user = new User({ email, username, name, password, edad, sexo, puestoTrabajo });
       user.save();
-
+      console.log('caso3 todo bien')
       res.json(
         jsonResponse(200, {
           message: "Usuario creado satisfactoriamente",
@@ -37,6 +39,7 @@ router.post("/", async function (req, res, next) {
       );
     }
   } catch (err) {
+    console.log('caso4 pcurrio un error')
     return res.status(500).json(
       jsonResponse(500, {
         error: "Error creando el usuario",
