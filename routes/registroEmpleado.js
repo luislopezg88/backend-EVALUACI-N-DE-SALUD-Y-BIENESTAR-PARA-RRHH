@@ -7,7 +7,7 @@ router.post("/", async function (req, res, next) {
   const { name, lastname, edad, sexo, puesto } = req.body;
 
   if (!name || !lastname) {
-    //return next(new Error("username and password are required"));
+    //return next(new Error("name and lastname are required"));
     return res.status(409).json(
       jsonResponse(409, {
         error: "name and lastname are required",

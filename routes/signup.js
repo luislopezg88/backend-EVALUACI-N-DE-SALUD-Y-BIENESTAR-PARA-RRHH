@@ -7,7 +7,7 @@ router.post("/", async function (req, res, next) {
   const { email, name, password, edad, sexo, puestoTrabajo } = req.body;
 
   if (!email || !password) {
-    //return next(new Error("username and password are required"));
+    //return next(new Error("email and password are required"));
     return res.status(409).json(
       jsonResponse(409, {
         error: "email and password son obligatorios",
