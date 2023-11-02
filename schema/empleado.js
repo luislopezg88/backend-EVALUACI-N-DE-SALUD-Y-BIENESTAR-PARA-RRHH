@@ -1,5 +1,4 @@
 const Mongoose = require("mongoose");
-const getEmpleadoInfo = require("../lib/getEmpleadoInfo");
 const Token = require("../schema/token");
 
 const EmpleadoSchema = new Mongoose.Schema({
