@@ -4,7 +4,8 @@ const { jsonResponse } = require("../lib/jsonResponse");
 const router = express.Router();
 
 router.post("/", async function (req, res, next) {
-  const { cuestionario_id, fecha_aplicacion, persona_id, respuestas } = req.body;
+  const { cuestionario_id, fecha_aplicacion, persona_id, respuestas } =
+    req.body;
 
   if (!cuestionario_id || !persona_id || !respuestas) {
     return res.status(400).json(
@@ -13,10 +14,14 @@ router.post("/", async function (req, res, next) {
       })
     );
   }
-  console.log('antes try')
+  console.log("antes try");
   try {
-    console.log('entro try')
-    const respuesta = new Respuesta({ cuestionario_id, fecha_aplicacion, persona_id, respuestas });
+    const respuesta = new Respuesta({
+      cuestionario_id,
+      fecha_aplicacion,
+      persona_id,
+      respuestas,
+    });
 
     // Guarda la respuesta en la base de datos
     respuesta.save();
