@@ -25,6 +25,7 @@ app.use("/api/signout", require("./routes/logout"));
 app.use("/api/registroEmpleado", require("./routes/registroEmpleado"));
 app.use("/api/listadoEmpleado", require("./routes/listadoEmpleado"));
 app.use("/api/horas", authenticateToken, require("./routes/seguimientos"));
+app.use("/api/perfil", authenticateToken, require("./routes/perfil"));
 
 // Ruta para renovar el token de acceso utilizando el token de actualización
 app.use("/api/refresh-token", require("./routes/refreshToken"));

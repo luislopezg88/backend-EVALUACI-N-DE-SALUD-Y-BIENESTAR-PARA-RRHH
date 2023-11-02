@@ -13,6 +13,7 @@ const UserSchema = new Mongoose.Schema({
   edad: { type: String },
   sexo: { type: String },
   puestoTrabajo: { type: String },
+  tipo: { type: String },
 });
 
 UserSchema.pre("save", function (next) {
