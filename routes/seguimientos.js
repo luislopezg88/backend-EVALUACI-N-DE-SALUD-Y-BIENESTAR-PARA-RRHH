@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     const items = await Horas.find({ idUser: req.user.id });
     return res.json(items);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return res.status(500).json({ error: "Error al obtener los todos" });
   }
 });
@@ -27,10 +27,10 @@ router.post("/", async (req, res) => {
     });
 
     const horasInfo = await hora.save();
-    console.log({ horasInfo });
+    //console.log({ horasInfo });
     res.json(horasInfo);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     res.status(500).json({ error: "Error al crear seguimiento de horas" });
   }
 });
