@@ -1,26 +1,28 @@
 const mongoose = require("mongoose");
 
 // Define un esquema para las respuestas
-const respuestaSchema = new mongoose.Schema({
+const EncuestaAplicadaSchema = new mongoose.Schema({
   cuestionario_id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    ref: "Cuestionarios",
+    //required: true,
   },
   fecha_aplicacion: {
     type: Date,
-    required: true,
+    //required: true,
   },
-  persona_id: {
+  empleado_id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    ref: "Empleados",
+    //required: true,
   },
   respuestas: {
-    type: [mongoose.Schema.Types.Mixed], // Define respuestas como un array de tipos mixtos
+    type: [mongoose.Schema.Types.Mixed], // mongoose.Schema.Types.Mixed - Define respuestas como un array de tipos mixtos
   },
 });
 
 // Define el modelo a partir del esquema
-const Respuesta = mongoose.model("Respuesta", respuestaSchema);
+const Respuesta = mongoose.model("Respuesta", EncuestaAplicadaSchema);
 
 module.exports = Respuesta;
 /*

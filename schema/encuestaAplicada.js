@@ -10,7 +10,7 @@ const RespuestaSchema = new mongoose.Schema({
 const EncuestaAplicadaSchema = new mongoose.Schema({
   cuestionario_id: { type: mongoose.Schema.Types.ObjectId, ref: "Cuestionario" }, // Hace referencia al cuestionario aplicado
   fecha_aplicacion: { type: Date },
-  persona_id: { type: mongoose.Schema.Types.ObjectId, ref: "Persona" }, // Hace referencia a la persona que completó la encuesta
+  empleado_id: { type: mongoose.Schema.Types.ObjectId, ref: "Persona" }, // Hace referencia a la persona que completó la encuesta
   respuestas: [RespuestaSchema], // Un array de respuestas a las preguntas
 });
 

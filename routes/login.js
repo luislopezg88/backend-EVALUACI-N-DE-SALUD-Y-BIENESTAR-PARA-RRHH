@@ -7,29 +7,29 @@ const router = express.Router();
 router.post("/", async function (req, res, next) {
   const { email, password } = req.body;
 
-  console.log('data recibida', { email, password })
+  //console.log('data recibida', { email, password })
 
   try {
     let user = new User();
     const userExists = await user.usernameExists(email);
-    console.log('userExists', userExists)
+    //console.log('userExists', userExists)
 
     if (userExists) {
       user = await User.findOne({ email: email });
-      console.log('user', user)
+      //console.log('user', user)
 
       const passwordCorrect = await user.isCorrectPassword(
         password,
         user.password
       );
 
-      console.log('passwordCorrect', passwordCorrect)
+      //console.log('passwordCorrect', passwordCorrect)
 
       if (passwordCorrect) {
         const accessToken = user.createAccessToken();
         const refreshToken = await user.createRefreshToken();
 
-        console.log('todo ok')
+        //console.log('todo ok')
         return res.json(
           jsonResponse(200, {
             accessToken,
@@ -40,7 +40,7 @@ router.post("/", async function (req, res, next) {
       } else {
         //res.status(401).json({ error: "email and/or password incorrect" });
 
-        console.log('email and/or password incorrect')
+        //console.log('email and/or password incorrect')
         return res.status(401).json(
           jsonResponse(401, {
             error: "email and/or password incorrect",
@@ -48,7 +48,7 @@ router.post("/", async function (req, res, next) {
         );
       }
     } else {
-      console.log("email does not exist");
+      //console.log("email does not exist");
       return res.status(401).json(
         jsonResponse(401, {
           error: "email does not exist",
@@ -56,7 +56,7 @@ router.post("/", async function (req, res, next) {
       );
     }
   } catch (err) {
-    console.log("err",err);
+    //console.log("err",err);
   }
 });
 

@@ -49,7 +49,7 @@ router.post("/save/:userId", async function (req, res, next) {
       );
     }
   } catch (err) {
-    console.log(err)
+    //console.log(err)
     return res.status(500).json(
       jsonResponse(500, {
         error: "Error creando el empleado",

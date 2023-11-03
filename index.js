@@ -28,6 +28,7 @@ app.use("/api/horas", authenticateToken, require("./routes/seguimientos"));
 app.use("/api/perfil", authenticateToken, require("./routes/perfil"));
 app.use("/api/cuestionarios", require("./routes/cuestionarios"));
 app.use("/api/guardarRespuestas", require("./routes/guardarRespuestas"));
+app.use("/api/resultados/cuestionarioId", require("./routes/encuestasAplicadas"));
 
 // Ruta para renovar el token de acceso utilizando el token de actualización
 app.use("/api/refresh-token", require("./routes/refreshToken"));
