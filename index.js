@@ -26,9 +26,13 @@ app.use("/api/registroEmpleado", require("./routes/registroEmpleado"));
 app.use("/api/listadoEmpleado", require("./routes/listadoEmpleado"));
 app.use("/api/horas", authenticateToken, require("./routes/seguimientos"));
 app.use("/api/perfil", authenticateToken, require("./routes/perfil"));
+//cuestionario
 app.use("/api/cuestionarios", require("./routes/cuestionarios"));
+
 app.use("/api/guardarRespuestas", require("./routes/guardarRespuestas"));
-app.use("/api/resultados/cuestionarioId", require("./routes/encuestasAplicadas"));
+
+app.use("/api/resultados/", require("./routes/encuestasAplicadas"));
+
 app.use("/api/taks", authenticateToken, require("./routes/tareas"));
 
 // Ruta para renovar el token de acceso utilizando el token de actualización

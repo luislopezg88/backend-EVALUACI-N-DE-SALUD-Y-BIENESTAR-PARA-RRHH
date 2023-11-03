@@ -2,7 +2,8 @@ const Mongoose = require("mongoose");
 const Token = require("../schema/token");
 
 const EmpleadoSchema = new Mongoose.Schema({
-  id: { type: Object },
+  //id: { type: Object }
+  id: Mongoose.Schema.Types.ObjectId,
   name: { type: String, required: true, unique: true },
   lastname: { type: String, required: true },
   edad: { type: String, required: true },

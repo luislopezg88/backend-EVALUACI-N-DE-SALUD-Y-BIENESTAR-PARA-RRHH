@@ -23,23 +23,23 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/:_id", async function (req, res) {
-const cuestionarioId = req.params._id;
-//console.log(cuestionarioId)
-try {
+  const cuestionarioId = req.params._id;
+  //console.log(cuestionarioId)
+  try {
     const cuestionario = await Cuestionario.findOne({ _id: cuestionarioId });
 
     res.json(
-    jsonResponse(200, {
+      jsonResponse(200, {
         cuestionario,
-    })
+      })
     );
-} catch (err) {
+  } catch (err) {
     return res.status(500).json(
-    jsonResponse(500, {
+      jsonResponse(500, {
         error: "Error al obtener el cuestionario",
-    })
+      })
     );
-}
+  }
 });
 
 module.exports = router;
