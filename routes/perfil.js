@@ -7,7 +7,7 @@ const Perfil = require("../schema/perfil");
 router.get("/:userId", async function (req, res) {
   const userId = req.params.userId;
   try {
-    const perfil = await Perfil.findOne({ user: userId });
+    const perfil = await Perfil.findOne({ user: userId }).populate('user');
 
     res.json(
       jsonResponse(200, {
