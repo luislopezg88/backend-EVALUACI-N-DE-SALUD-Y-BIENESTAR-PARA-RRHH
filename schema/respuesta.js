@@ -19,6 +19,8 @@ const EncuestaAplicadaSchema = new mongoose.Schema({
   respuestas: {
     type: [mongoose.Schema.Types.Mixed], // mongoose.Schema.Types.Mixed - Define respuestas como un array de tipos mixtos
   },
+  seleccion_satifaccion: { type: String, required: true },
+  texto_satifaccion: { type: String, required: true },
 });
 
 // Define el modelo a partir del esquema

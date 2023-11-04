@@ -41,26 +41,7 @@ app.use("/api/taks", authenticateToken, require("./routes/tareas"));
 app.use("/api/refresh-token", require("./routes/refreshToken"));
 
 app.use("/api/posts", authenticateToken, require("./routes/posts"));
-// Ruta protegida que requiere autenticación
-/* app.get("/api/posts", authenticateToken, (req, res) => {
-  res.json(posts);
-}); */
-/* app.post("/api/posts", authenticateToken, (req, res) => {
-  if (!req.body.title) {
-    return res.status(400).json({ error: "Title is required" });
-  }
-
-  const post = {
-    id: posts.length + 1,
-    title: req.body.title,
-    completed: false,
-  };
-
-  posts.push(post);
-
-  res.json(post);
-}); */
-
+// Ruta protegida que requiere autenticació
 app.use("/api/user", authenticateToken, require("./routes/user"));
 
 app.listen(port, () => {
