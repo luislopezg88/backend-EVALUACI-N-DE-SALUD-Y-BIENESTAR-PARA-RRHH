@@ -32,6 +32,8 @@ app.use("/api/cuestionarios", require("./routes/cuestionarios"));
 app.use("/api/guardarRespuestas", require("./routes/guardarRespuestas"));
 
 app.use("/api/resultados/", require("./routes/encuestasAplicadas"));
+//Evaluacion
+app.use("/api/evaluacion", authenticateToken, require("./routes/evaluacion"));
 
 app.use("/api/taks", authenticateToken, require("./routes/tareas"));
 
