@@ -21,6 +21,7 @@ const EncuestaAplicadaSchema = new mongoose.Schema({
   },
   seleccion_satifaccion: { type: String, required: true },
   texto_satifaccion: { type: String, required: true },
+  imagenes: { type: Array, required: true },
 });
 
 // Define el modelo a partir del esquema
