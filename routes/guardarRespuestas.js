@@ -11,6 +11,7 @@ router.post("/", async function (req, res, next) {
     respuestas,
     seleccion_satifaccion,
     texto_satifaccion,
+    imagenes,
   } = req.body;
 
   if (!cuestionario_id || !empleado_id || !respuestas) {
@@ -29,6 +30,7 @@ router.post("/", async function (req, res, next) {
       respuestas,
       seleccion_satifaccion,
       texto_satifaccion,
+      imagenes
     });
 
     // Guarda la respuesta en la base de datos
