@@ -4,7 +4,7 @@ const { jsonResponse } = require("../lib/jsonResponse");
 const router = express.Router();
 
 router.post("/", async function (req, res, next) {
-  const { name, lastname, edad, sexo, puesto } = req.body;
+  const { name, lastname, edad, sexo, puestoTrabajo } = req.body;
 
   if (!name || !lastname) {
     //return next(new Error("name and lastname are required"));
@@ -27,7 +27,7 @@ router.post("/", async function (req, res, next) {
       );
       //return next(new Error("Empleado already exists"));
     } else {
-      const empleado = new Empleado({ name, lastname, edad, sexo, puesto });
+      const empleado = new Empleado({ name, lastname, edad, sexo, puestoTrabajo });
 
       empleado.save();
 
