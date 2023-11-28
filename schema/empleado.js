@@ -9,6 +9,11 @@ const EmpleadoSchema = new Mongoose.Schema({
   edad: { type: String },
   sexo: { type: String },
   puestoTrabajo: { type: String },
+  user_id: {
+    type: Mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    //required: true,
+  },
 });
 
 EmpleadoSchema.methods.nameExists = async function (name) {

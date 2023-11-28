@@ -31,7 +31,7 @@ router.post("/", async function (req, res, next) {
       //return next(new Error("user email exists"));
     } else {
       const user = new User({ email, username, name, password, edad, sexo, puestoTrabajo, tipo });
-      user.save();
+      await user.save();
 
       if(tipo === 'employee'){
         //GUARDAR EMPLEADO
@@ -47,9 +47,8 @@ router.post("/", async function (req, res, next) {
             );
             //return next(new Error("Empleado already exists"));
           } else {
-            const empleado = new Empleado({ name, edad, sexo, puestoTrabajo });
-
-            empleado.save();
+            const empleado = new Empleado({ name, edad, sexo, puestoTrabajo, user_id: user._id });
+            await empleado.save();
 
             res.json(
               jsonResponse(200, {
